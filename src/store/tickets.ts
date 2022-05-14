@@ -7,15 +7,20 @@ const ticketsSlice = createSlice({
   initialState: (JSON.parse(localStorage.getItem('tickets') as string) || []) as Ticket[],
   reducers: {
     create: (state, action) => {
-      return [...state, { ...action.payload, id: uuidv4(), assignedUser: { username: action.payload.username } }];
+      const ticket = { ...action.payload, id: uuidv4(), assignedUser: { username: action.payload.username } };
+      console.log(state, ticket);
+      return [...state, ticket];
     },
     deleteTicket: (state, action) => {
       return state.filter(ticket => ticket.id !== action.payload.id);
     },
+    editTicket: (state, action) => {
+      return state.filter(ticket => ticket.id !== action.payload.id).concat(action.payload);
+    }
   }
 });
 
-export const { create, deleteTicket } = ticketsSlice.actions
+export const { create, deleteTicket, editTicket } = ticketsSlice.actions
 
 export const store = configureStore({
   reducer: ticketsSlice.reducer

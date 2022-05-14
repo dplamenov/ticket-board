@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Box, Typography, Modal, TextField, InputLabel, MenuItem, FormControl } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Status from '../interfaces/Status';
-import { store, create } from '../store/tickets';
+import { store as editTicketStore, hide as storeHide} from '../store/editTicket';
+import { store as ticketStore, editTicket } from '../store/tickets';
+
+import Ticket from '../interfaces/Ticket';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -16,34 +19,33 @@ const style = {
 };
 
 function EditModal({ isOpen, close }: { isOpen: boolean, close: () => void }) {
-  const [label, setLabel] = useState('');
-  const [estimationValue, setEstimationValue] = useState('');
-  const [assignedUser, setAssignedUser] = useState('');
-  const [status, setStatus] = useState(0);
+  const [ticket, setTicket] = useState<Ticket>();
+
+  useEffect(() => {
+    editTicketStore.subscribe(() => {
+      setTicket(editTicketStore.getState().ticket as Ticket);
+    });
+  }, []);
 
   const handleEdit = () => {
-    store.dispatch(create({ label, estimationValue, username: assignedUser, status }));
-    setLabel('');
-    setEstimationValue('');
-    setAssignedUser('');
-    setStatus(0);
-    close();
+    ticketStore.dispatch(editTicket({ ...ticket }));
+    editTicketStore.dispatch(storeHide());
   };
 
   const handleLabelChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLabel(event.target.value);
+    setTicket(t => ({ ...t, label: event.target.value} as Ticket))
   };
 
   const handleEstimationValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEstimationValue(event.target.value);
+    setTicket(t => ({ ...t, estimationValue: event.target.value } as Ticket))
   };
 
   const handleUserChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAssignedUser(event.target.value);
+    setTicket(t => ({ ...t, assignedUser: { username: event.target.value } } as Ticket))
   };
 
   const handleStatusChange = (event: SelectChangeEvent) => {
-    setStatus(+event.target.value);
+    setTicket(t => ({ ...t, status: +event.target.value } as Ticket))
   };
 
   return <Modal
@@ -54,18 +56,18 @@ function EditModal({ isOpen, close }: { isOpen: boolean, close: () => void }) {
   >
     <Box sx={style}>
       <Typography id="modal-modal-title" variant="h6" component="h2">
-        Create ticket
+        Edit ticket
       </Typography>
-      <TextField fullWidth label="label" id="label" onChange={handleLabelChange} value={label} />
-      <TextField fullWidth label="estimation value" id="estimation-value" onChange={handleEstimationValueChange} value={estimationValue} />
-      <TextField fullWidth label="assigned user" id="assigned-user" onChange={handleUserChange} value={assignedUser} />
+      <TextField fullWidth label="label" id="label" onChange={handleLabelChange} value={ticket?.label} />
+      <TextField fullWidth label="estimation value" id="estimation-value" onChange={handleEstimationValueChange} value={ticket?.estimationValue} />
+      <TextField fullWidth label="assigned user" id="assigned-user" onChange={handleUserChange} value={ticket?.assignedUser.username} />
       <FormControl fullWidth>
         <InputLabel id="status-label">Status</InputLabel>
         <Select
           labelId="status-label"
           id="status-select"
           label="Status"
-          value={status.toString()}
+          value={ticket?.status.toString()}
           sx={{ width: '100%' }}
           onChange={handleStatusChange}
         >

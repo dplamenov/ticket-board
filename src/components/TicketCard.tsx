@@ -1,10 +1,16 @@
 import { ListItem, Card, CardActions, CardContent, Button, Typography } from '@mui/material';
 import Ticket from '../interfaces/Ticket';
-import { store, deleteTicket } from '../store/tickets';
+import { store as ticketStore, deleteTicket } from '../store/tickets';
+import { store as editTicketStore, show } from '../store/editTicket';
+
 
 function TicketCard({ticket}: {ticket: Ticket}) {
   const handleDelete = () => {
-    store.dispatch(deleteTicket({id: ticket.id}));
+    ticketStore.dispatch(deleteTicket({id: ticket.id}));
+  };
+
+  const handleEdit = () => {
+    editTicketStore.dispatch(show(ticket));
   };
 
   return (
@@ -22,7 +28,7 @@ function TicketCard({ticket}: {ticket: Ticket}) {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Edit</Button>
+            <Button size="small" onClick={handleEdit}>Edit</Button>
             <Button size="small" onClick={handleDelete}>Delete</Button>
           </CardActions>
         </Card>
