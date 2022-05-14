@@ -9,6 +9,7 @@ import { Button } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import { useState } from 'react';
 import Status from '../interfaces/Status';
+import { store, create } from '../store';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -21,15 +22,19 @@ const style = {
   p: 4,
 };
 
-function CreateModal({ isOpen, open, close }: { isOpen: boolean, open: () => void, close: () => void}) {
+function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
   const [label, setLabel] = useState('');
   const [estimationValue, setEstimationValue] = useState('');
   const [assignedUser, setAssignedUser] = useState('');
   const [status, setStatus] = useState('');
 
   const handleCreate = () => {
-    // console.log('create');
-    console.log(label, estimationValue, assignedUser, status);
+    store.dispatch(create({ label, estimationValue, assignedUser, status }));
+    setLabel('');
+    setEstimationValue('');
+    setAssignedUser('');
+    setStatus('');
+    close();
   }; 
 
   const handleLabelChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,9 +63,9 @@ function CreateModal({ isOpen, open, close }: { isOpen: boolean, open: () => voi
       <Typography id="modal-modal-title" variant="h6" component="h2">
        Create ticket
       </Typography>
-      <TextField fullWidth label="label" id="label" onChange={handleLabelChange}/>
-      <TextField fullWidth label="estimation value" id="estimation-value" onChange={handleEstimationValueChange}/>
-      <TextField fullWidth label="assigned user" id="assigned-user" onChange={handleUserChange}/>
+      <TextField fullWidth label="label" id="label" onChange={handleLabelChange} value={label}/>
+      <TextField fullWidth label="estimation value" id="estimation-value" onChange={handleEstimationValueChange} value={estimationValue}/>
+      <TextField fullWidth label="assigned user" id="assigned-user" onChange={handleUserChange} value={assignedUser}/>
       <FormControl fullWidth>
         <InputLabel id="status-label">Status</InputLabel>
         <Select

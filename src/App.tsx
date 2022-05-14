@@ -52,7 +52,7 @@ function App() {
           <TicketCard ticket={ticket} />
         </List>
       </Box>
-      <CreateModal isOpen={isCreateModalOpen} open={openCreateModal} close={closeCreateModal}/>
+      <CreateModal isOpen={isCreateModalOpen} close={closeCreateModal}/>
     </div>
   );
 }
