@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
 import TicketCard from './components/TicketCard';
-import { Box, List } from '@mui/material';
+import { Box, Button, List } from '@mui/material';
 import Status from './interfaces/Status';
+import CreateModal from './components/CreateModal';
 
 const ticket = {
   id: '1',
@@ -20,8 +21,13 @@ const style = {
 };
 
 function App() {
+  const [isCreateModalOpen, setIsCreateModalOpen] = React.useState(false);
+  const openCreateModal = () => setIsCreateModalOpen(true);
+  const closeCreateModal = () => setIsCreateModalOpen(false);
+
   return (
     <div className="App">
+      <Button variant="contained" color="success" onClick={openCreateModal}>Create</Button>
       <Box sx={{ display: 'flex' }}>
         <List sx={style} component="nav" aria-label="mailbox folders">
           <h2>Todo</h2>
@@ -46,6 +52,7 @@ function App() {
           <TicketCard ticket={ticket} />
         </List>
       </Box>
+      <CreateModal isOpen={isCreateModalOpen} open={openCreateModal} close={closeCreateModal}/>
     </div>
   );
 }
