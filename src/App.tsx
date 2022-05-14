@@ -1,8 +1,8 @@
 import {useState} from 'react';
-import './App.css';
 import { Button } from '@mui/material';
 import CreateModal from './components/CreateModal';
 import Tickets from './components/Tickets';
+import './App.css';
 
 function App() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);

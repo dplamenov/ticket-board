@@ -1,13 +1,6 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { Button } from '@mui/material';
-import FormControl from '@mui/material/FormControl';
 import { useState } from 'react';
+import { Button, Box, Typography, Modal, TextField, InputLabel, MenuItem, FormControl } from '@mui/material';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Status from '../interfaces/Status';
 import { store, create } from '../store';
 
@@ -50,7 +43,6 @@ function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
   };
 
   const handleStatusChange = (event: SelectChangeEvent) => {
-    console.log(event.target.value);
     setStatus(+event.target.value);
   };
   

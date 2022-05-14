@@ -1,12 +1,6 @@
-import ListItem from '@mui/material/ListItem';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import { ListItem, Card, CardActions, CardContent, Button, Typography } from '@mui/material';
 import Ticket from '../interfaces/Ticket';
 import { store, deleteTicket } from '../store';
-
 
 function TicketCard({ticket}: {ticket: Ticket}) {
   const handleDelete = () => {

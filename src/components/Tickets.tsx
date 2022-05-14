@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
+import { Box, List } from '@mui/material';
 import { store } from '../store';
 import Ticket from '../interfaces/Ticket';
 import Status from '../interfaces/Status';
-import { Box, List } from '@mui/material';
 import TicketCard from '../components/TicketCard';
 
 const style = {
