@@ -18,15 +18,18 @@ const style = {
 
 function EditModal({ isOpen, close }: { isOpen: boolean, close: () => void }) {
   const [ticket, setTicket] = useState<Ticket>();
+  const [oldStatus, setOldStatus] = useState<Status>();
 
   useEffect(() => {
     editTicketStore.subscribe(() => {
-      setTicket(editTicketStore.getState().ticket as Ticket);
+      const ticket = editTicketStore.getState().ticket as Ticket;
+      setTicket(ticket);
+      setOldStatus(ticket?.status as Status);
     });
   }, []);
 
   const handleEdit = () => {
-    ticketStore.dispatch(editTicket({ ...ticket }));
+    ticketStore.dispatch(editTicket({ ticket, oldStatus }));
     editTicketStore.dispatch(storeHide());
   };
 

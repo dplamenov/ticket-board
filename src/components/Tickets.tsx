@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Box, List } from '@mui/material';
 import { store } from '../store/tickets';
-import { Ticket, Status } from '../interfaces';
+import { Ticket } from '../interfaces';
 import TicketCard from '../components/TicketCard';
 
 const style = {
@@ -10,7 +10,7 @@ const style = {
 };
 
 function Tickets() {
-  const [tickets, setTickets] = useState<Ticket[]>([]);
+  const [tickets, setTickets] = useState<Ticket[][]>([]);
 
   useEffect(() => {
     setTickets(store.getState());
@@ -24,25 +24,25 @@ function Tickets() {
       <Box sx={{ display: 'flex' }}>
         <List sx={style} component="nav">
           <h2>Todo</h2>
-          {tickets.filter(ticket => ticket.status === Status.ToDo.valueOf()).map((ticket, key) => {
+          {(tickets[0] || []).map((ticket, key) => {
             return <TicketCard key={key} ticket={ticket} />
           })}
         </List>
         <List sx={style} component="nav">
           <h2>In progress</h2>
-          {tickets.filter(ticket => ticket.status === Status.InProgress.valueOf()).map((ticket, key) => {
+          {(tickets[1] || []).map((ticket, key) => {
             return <TicketCard key={key} ticket={ticket} />
           })}
         </List>
         <List sx={style} component="nav">
           <h2>In review</h2>
-          {tickets.filter(ticket => ticket.status === Status.InReview.valueOf()).map((ticket, key) => {
+          {(tickets[2] || []).map((ticket, key) => {
             return <TicketCard key={key} ticket={ticket} />
           })}
         </List>
         <List sx={style} component="nav">
           <h2>Done</h2>
-          {tickets.filter(ticket => ticket.status === Status.Done.valueOf()).map((ticket, key) => {
+          {(tickets[3] || []).map((ticket, key) => {
             return <TicketCard key={key} ticket={ticket} />
           })}
         </List>

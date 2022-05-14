@@ -6,7 +6,7 @@ import { store as editTicketStore, show } from '../store/editTicketModal';
 
 function TicketCard({ticket}: {ticket: Ticket}) {
   const handleDelete = () => {
-    ticketStore.dispatch(deleteTicket({id: ticket.id}));
+    ticketStore.dispatch(deleteTicket({id: ticket.id, status: ticket.status}));
   };
 
   const handleEdit = () => {
