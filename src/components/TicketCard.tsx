@@ -5,8 +5,14 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Ticket from '../interfaces/Ticket';
+import { store, deleteTicket } from '../store';
+
 
 function TicketCard({ticket}: {ticket: Ticket}) {
+  const handleDelete = () => {
+    store.dispatch(deleteTicket({id: ticket.id}));
+  };
+
   return (
     <ListItem>
       <Card sx={{ width: "100%" }}>
@@ -23,7 +29,7 @@ function TicketCard({ticket}: {ticket: Ticket}) {
         </CardContent>
         <CardActions>
           <Button size="small">Edit</Button>
-          <Button size="small">Delete</Button>
+          <Button size="small" onClick={handleDelete}>Delete</Button>
         </CardActions>
       </Card>
     </ListItem>

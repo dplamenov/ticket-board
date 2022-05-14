@@ -1,19 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { store } from '../store';
 import Ticket from '../interfaces/Ticket';
 import Status from '../interfaces/Status';
 import { Box, List } from '@mui/material';
 import TicketCard from '../components/TicketCard';
-
-const ticket = {
-  id: '1',
-  label: 'test',
-  estimationValue: '2 days',
-  assignedUser: {
-    username: 'dimitar'
-  },
-  status: Status.InReview
-};
 
 const style = {
   width: '100%',
