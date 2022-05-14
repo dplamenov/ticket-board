@@ -26,14 +26,14 @@ function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
   const [label, setLabel] = useState('');
   const [estimationValue, setEstimationValue] = useState('');
   const [assignedUser, setAssignedUser] = useState('');
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState(0);
 
   const handleCreate = () => {
     store.dispatch(create({ label, estimationValue, assignedUser, status }));
     setLabel('');
     setEstimationValue('');
     setAssignedUser('');
-    setStatus('');
+    setStatus(0);
     close();
   }; 
 
@@ -50,7 +50,8 @@ function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
   };
 
   const handleStatusChange = (event: SelectChangeEvent) => {
-    setStatus(event.target.value as string);
+    console.log(event.target.value);
+    setStatus(+event.target.value);
   };
   
   return <Modal
@@ -72,12 +73,12 @@ function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
           labelId="status-label"
           id="status-select"
           label="Status"
-          value={status}
+          value={status.toString()}
           sx={{ width: '100%' }}
           onChange={handleStatusChange}
         >
-          {Object.keys(Status).filter((v) => isNaN(Number(v))).map(e => {
-            return <MenuItem key={e} value={e}>{e}</MenuItem>
+          {Object.values(Status).filter((v) => !isNaN(Number(v))).map(e => {
+            return <MenuItem key={e} value={e}>{Status[+e]}</MenuItem>
           })}
         </Select>
       </FormControl>

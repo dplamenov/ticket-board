@@ -7,7 +7,7 @@ const ticketsSlice = createSlice({
   initialState: (JSON.parse(localStorage.getItem('tickets') as string) || []) as Ticket[],
   reducers: {
     create: (state, action) => {
-      state.push({ ...action.payload, id: uuidv4() });
+      state.push({ ...action.payload, id: uuidv4(), assignedUser: {username: action.payload.username} });
     }
   }
 });
