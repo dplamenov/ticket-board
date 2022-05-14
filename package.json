@@ -26,7 +26,8 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "lint": "eslint '**/*.tsx' '**/*.ts' --ignore-pattern node_modules/"
     },
     "browserslist": {
         "production": [
@@ -41,6 +42,8 @@
         ]
     },
     "devDependencies": {
-        "eslint": "^8.15.0"
+        "@typescript-eslint/eslint-plugin": "^5.23.0",
+        "@typescript-eslint/parser": "^5.23.0",
+        "eslint": "^7.32.0 || ^8.2.0"
     }
 }
