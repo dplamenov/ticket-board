@@ -2,9 +2,9 @@ import {useState, useEffect} from 'react';
 import { Button } from '@mui/material';
 import CreateModal from './components/CreateModal';
 import Tickets from './components/Tickets';
-import './App.css';
 import EditModal from './components/EditModal';
 import { store as editTicketStore, store } from './store/editTicketModal';
+import './App.css';
 
 
 function App() {

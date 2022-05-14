@@ -52,7 +52,7 @@ function EditModal({ isOpen, close }: { isOpen: boolean, close: () => void }) {
   return <Modal
     open={isOpen}
     onClose={close}
-    aria-labelledby="edit-tocket"
+    aria-labelledby="edit-ticket"
   >
     <Box sx={style}>
       <Typography variant="h6" component="h2">
@@ -77,6 +77,7 @@ function EditModal({ isOpen, close }: { isOpen: boolean, close: () => void }) {
         </Select>
       </FormControl>
       <Button variant="contained" color="success" sx={{ marginTop: '20px' }} onClick={handleEdit}>Edit</Button>
+      <Button variant="contained" color="warning" sx={{ marginTop: '20px', marginLeft: '10px' }} onClick={close}>Close</Button>
     </Box>
   </Modal>
 }
