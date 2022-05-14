@@ -1,5 +1,5 @@
 import { ListItem, Card, CardActions, CardContent, Button, Typography } from '@mui/material';
-import Ticket from '../interfaces/Ticket';
+import { Ticket } from '../interfaces';
 import { store as ticketStore, deleteTicket } from '../store/tickets';
 import { store as editTicketStore, show } from '../store/editTicket';
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Box, Typography, Modal, TextField, InputLabel, MenuItem, FormControl } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Status from '../interfaces/Status';
+import { Status } from '../interfaces';
 import { store, create } from '../store/tickets';
 
 const style = {
