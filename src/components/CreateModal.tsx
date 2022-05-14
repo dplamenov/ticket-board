@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Button, Box, Typography, Modal, TextField, InputLabel, MenuItem, FormControl } from '@mui/material';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { Status } from '../interfaces';
+import { Button, Box, Typography, Modal, TextField, InputLabel, MenuItem, FormControl, Select } from '@mui/material';
+import { SelectChangeEvent } from '@mui/material/Select';
 import { store, create } from '../store/tickets';
+import { Status } from '../interfaces';
 
 const style = {
   position: 'absolute',
