@@ -4,8 +4,9 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Ticket from '../interfaces/Ticket';
 
-function TicketCard({ticket}: {ticket: any}) {
+function TicketCard({ticket}: {ticket: Ticket}) {
   return (
     <ListItem>
       <Card sx={{ width: "100%" }}>
@@ -14,7 +15,7 @@ function TicketCard({ticket}: {ticket: any}) {
             {ticket.label}
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            user: {ticket.user.username}
+            user: {ticket.assignedUser.username}
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
             value: {ticket.estimationValue}
