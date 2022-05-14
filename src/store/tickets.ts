@@ -8,7 +8,6 @@ const ticketsSlice = createSlice({
   reducers: {
     create: (state, action) => {
       const ticket = { ...action.payload, id: uuidv4(), assignedUser: { username: action.payload.username } };
-      console.log(state, ticket);
       return [...state, ticket];
     },
     deleteTicket: (state, action) => {

@@ -49,11 +49,10 @@ function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
   return <Modal
     open={isOpen}
     onClose={close}
-    aria-labelledby="modal-modal-title"
-    aria-describedby="modal-modal-description"
+    aria-labelledby="create-ticket"
   >
     <Box sx={style}>
-      <Typography id="modal-modal-title" variant="h6" component="h2">
+      <Typography variant="h6" component="h2">
        Create ticket
       </Typography>
       <TextField fullWidth label="label" id="label" onChange={handleLabelChange} value={label}/>
