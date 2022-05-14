@@ -28,7 +28,7 @@ function CreateModal({ isOpen, open, close }: { isOpen: boolean, open: () => voi
   const [status, setStatus] = useState('');
 
   const handleCreate = () => {
-    console.log('create');
+    // console.log('create');
     console.log(label, estimationValue, assignedUser, status);
   }; 
 
