@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Box, Typography, Modal, TextField, InputLabel, MenuItem, FormControl } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Status, Ticket } from '../interfaces';
@@ -6,7 +6,7 @@ import { store as editTicketStore, hide as storeHide} from '../store/editTicketM
 import { store as ticketStore, editTicket } from '../store/tickets';
 
 const style = {
-  position: 'absolute' as 'absolute',
+  position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',

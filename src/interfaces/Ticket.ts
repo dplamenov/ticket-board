@@ -1,5 +1,5 @@
-import Status from "./Status";
-import User from "./User";
+import Status from './Status';
+import User from './User';
 
 interface Ticket {
   id: string,
