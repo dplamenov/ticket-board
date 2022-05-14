@@ -22,7 +22,7 @@ function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
   const [status, setStatus] = useState(0);
 
   const handleCreate = () => {
-    store.dispatch(create({ label, estimationValue, assignedUser, status }));
+    store.dispatch(create({ label, estimationValue, username: assignedUser, status }));
     setLabel('');
     setEstimationValue('');
     setAssignedUser('');
