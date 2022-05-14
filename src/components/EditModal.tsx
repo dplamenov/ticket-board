@@ -4,17 +4,7 @@ import { SelectChangeEvent } from '@mui/material/Select';
 import { store as ticketStore, editTicket } from '../store/tickets';
 import { store as editTicketStore, hide as storeHide} from '../store/editTicketModal';
 import { Status, Ticket } from '../interfaces';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  boxShadow: 24,
-  p: 4,
-};
+import modalStyles from '../styles/modalStyles';
 
 function EditModal({ isOpen, close }: { isOpen: boolean, close: () => void }) {
   const [ticket, setTicket] = useState<Ticket>();
@@ -54,7 +44,7 @@ function EditModal({ isOpen, close }: { isOpen: boolean, close: () => void }) {
     onClose={close}
     aria-labelledby="edit-ticket"
   >
-    <Box sx={style}>
+    <Box sx={modalStyles}>
       <Typography variant="h6" component="h2">
         Edit ticket
       </Typography>

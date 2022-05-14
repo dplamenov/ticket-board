@@ -3,17 +3,7 @@ import { Button, Box, Typography, Modal, TextField, InputLabel, MenuItem, FormCo
 import { SelectChangeEvent } from '@mui/material/Select';
 import { store, create } from '../store/tickets';
 import { Status } from '../interfaces';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  boxShadow: 24,
-  p: 4,
-};
+import modalStyles from '../styles/modalStyles';
 
 function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
   const [label, setLabel] = useState('');
@@ -51,7 +41,7 @@ function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
     onClose={close}
     aria-labelledby="create-ticket"
   >
-    <Box sx={style}>
+    <Box sx={modalStyles}>
       <Typography variant="h6" component="h2">
        Create ticket
       </Typography>
