@@ -1,7 +1,7 @@
 import { ListItem, Card, CardActions, CardContent, Button, Typography } from '@mui/material';
 import { Ticket } from '../interfaces';
 import { store as ticketStore, deleteTicket } from '../store/tickets';
-import { store as editTicketStore, show } from '../store/editTicket';
+import { store as editTicketStore, show } from '../store/editTicketModal';
 
 
 function TicketCard({ticket}: {ticket: Ticket}) {

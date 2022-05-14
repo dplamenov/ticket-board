@@ -1,7 +1,7 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit'
 
-const editTicketsSlice = createSlice({
-  name: 'editTickets',
+const editTicketModalSlice = createSlice({
+  name: 'editTicketModal',
   initialState: {isOpen: false, ticket: {}},
   reducers: {
     show: (state, action) => {
@@ -16,8 +16,8 @@ const editTicketsSlice = createSlice({
   }
 });
 
-export const { show, hide } = editTicketsSlice.actions
+export const { show, hide } = editTicketModalSlice.actions
 
 export const store = configureStore({
-  reducer: editTicketsSlice.reducer
+  reducer: editTicketModalSlice.reducer
 })

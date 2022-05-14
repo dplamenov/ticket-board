@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button, Box, Typography, Modal, TextField, InputLabel, MenuItem, FormControl } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Status, Ticket } from '../interfaces';
-import { store as editTicketStore, hide as storeHide} from '../store/editTicket';
+import { store as editTicketStore, hide as storeHide} from '../store/editTicketModal';
 import { store as ticketStore, editTicket } from '../store/tickets';
 
 const style = {

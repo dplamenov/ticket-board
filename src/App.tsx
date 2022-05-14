@@ -4,7 +4,7 @@ import CreateModal from './components/CreateModal';
 import Tickets from './components/Tickets';
 import './App.css';
 import EditModal from './components/EditModal';
-import { store as editTicketStore, store } from './store/editTicket';
+import { store as editTicketStore, store } from './store/editTicketModal';
 
 
 function App() {
