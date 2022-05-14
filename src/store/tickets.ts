@@ -1,5 +1,5 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit'
-import Ticket from './interfaces/Ticket';
+import Ticket from '../interfaces/Ticket';
 import { v4 as uuidv4 } from 'uuid';
 
 const ticketsSlice = createSlice({

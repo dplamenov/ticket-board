@@ -15,20 +15,20 @@ const style = {
   p: 4,
 };
 
-function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
+function EditModal({ isOpen, close }: { isOpen: boolean, close: () => void }) {
   const [label, setLabel] = useState('');
   const [estimationValue, setEstimationValue] = useState('');
   const [assignedUser, setAssignedUser] = useState('');
   const [status, setStatus] = useState(0);
 
-  const handleCreate = () => {
+  const handleEdit = () => {
     store.dispatch(create({ label, estimationValue, username: assignedUser, status }));
     setLabel('');
     setEstimationValue('');
     setAssignedUser('');
     setStatus(0);
     close();
-  }; 
+  };
 
   const handleLabelChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLabel(event.target.value);
@@ -45,7 +45,7 @@ function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
   const handleStatusChange = (event: SelectChangeEvent) => {
     setStatus(+event.target.value);
   };
-  
+
   return <Modal
     open={isOpen}
     onClose={close}
@@ -54,11 +54,11 @@ function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
   >
     <Box sx={style}>
       <Typography id="modal-modal-title" variant="h6" component="h2">
-       Create ticket
+        Create ticket
       </Typography>
-      <TextField fullWidth label="label" id="label" onChange={handleLabelChange} value={label}/>
-      <TextField fullWidth label="estimation value" id="estimation-value" onChange={handleEstimationValueChange} value={estimationValue}/>
-      <TextField fullWidth label="assigned user" id="assigned-user" onChange={handleUserChange} value={assignedUser}/>
+      <TextField fullWidth label="label" id="label" onChange={handleLabelChange} value={label} />
+      <TextField fullWidth label="estimation value" id="estimation-value" onChange={handleEstimationValueChange} value={estimationValue} />
+      <TextField fullWidth label="assigned user" id="assigned-user" onChange={handleUserChange} value={assignedUser} />
       <FormControl fullWidth>
         <InputLabel id="status-label">Status</InputLabel>
         <Select
@@ -74,9 +74,9 @@ function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
           })}
         </Select>
       </FormControl>
-      <Button variant="contained" color="success" sx={{ marginTop: '10px' }} onClick={handleCreate}>Create</Button>
+      <Button variant="contained" color="success" sx={{ marginTop: '10px' }} onClick={handleEdit}>Edit</Button>
     </Box>
   </Modal>
 }
 
-export default CreateModal;
+export default EditModal;
