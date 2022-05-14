@@ -55,10 +55,10 @@ function EditModal({ isOpen, close }: { isOpen: boolean, close: () => void }) {
       <Typography variant="h6" component="h2">
         Edit ticket
       </Typography>
-      <TextField fullWidth label="label" id="label" onChange={handleLabelChange} value={ticket?.label} />
-      <TextField fullWidth label="estimation value" id="estimation-value" onChange={handleEstimationValueChange} value={ticket?.estimationValue} />
-      <TextField fullWidth label="assigned user" id="assigned-user" onChange={handleUserChange} value={ticket?.assignedUser.username} />
-      <FormControl fullWidth>
+      <TextField fullWidth label="label" id="label" onChange={handleLabelChange} value={ticket?.label} margin="dense"/>
+      <TextField fullWidth label="estimation value" id="estimation-value" onChange={handleEstimationValueChange} value={ticket?.estimationValue} margin="dense"/>
+      <TextField fullWidth label="assigned user" id="assigned-user" onChange={handleUserChange} value={ticket?.assignedUser.username} margin="dense"/>
+      <FormControl fullWidth margin="dense">
         <InputLabel id="status-label">Status</InputLabel>
         <Select
           labelId="status-label"
@@ -73,7 +73,7 @@ function EditModal({ isOpen, close }: { isOpen: boolean, close: () => void }) {
           })}
         </Select>
       </FormControl>
-      <Button variant="contained" color="success" sx={{ marginTop: '10px' }} onClick={handleEdit}>Edit</Button>
+      <Button variant="contained" color="success" sx={{ marginTop: '20px' }} onClick={handleEdit}>Edit</Button>
     </Box>
   </Modal>
 }

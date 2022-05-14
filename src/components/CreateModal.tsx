@@ -55,10 +55,10 @@ function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
       <Typography variant="h6" component="h2">
        Create ticket
       </Typography>
-      <TextField fullWidth label="label" id="label" onChange={handleLabelChange} value={label}/>
-      <TextField fullWidth label="estimation value" id="estimation-value" onChange={handleEstimationValueChange} value={estimationValue}/>
-      <TextField fullWidth label="assigned user" id="assigned-user" onChange={handleUserChange} value={assignedUser}/>
-      <FormControl fullWidth>
+      <TextField fullWidth label="label" id="label" onChange={handleLabelChange} value={label} margin="dense"/>
+      <TextField fullWidth label="estimation value" id="estimation-value" onChange={handleEstimationValueChange} value={estimationValue} margin="dense"/>
+      <TextField fullWidth label="assigned user" id="assigned-user" onChange={handleUserChange} value={assignedUser} margin="dense"/>
+      <FormControl fullWidth margin="dense">
         <InputLabel id="status-label">Status</InputLabel>
         <Select
           labelId="status-label"
@@ -73,7 +73,7 @@ function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
           })}
         </Select>
       </FormControl>
-      <Button variant="contained" color="success" sx={{ marginTop: '10px' }} onClick={handleCreate}>Create</Button>
+      <Button variant="contained" color="success" sx={{ marginTop: '20px' }} onClick={handleCreate}>Create</Button>
     </Box>
   </Modal>
 }
