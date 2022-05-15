@@ -2,9 +2,11 @@ import { ListItem, Card, CardActions, CardContent, Button, Typography } from '@m
 import { store as ticketStore, deleteTicket } from '../store/tickets';
 import { store as editTicketStore, show } from '../store/editTicketModal';
 import { Ticket } from '../interfaces';
+import showNotifacion from '../notification';
 
 function TicketCard({ticket}: {ticket: Ticket}) {
   const handleDelete = () => {
+    showNotifacion('Success', 'Successfully deleted', 'success');
     ticketStore.dispatch(deleteTicket({id: ticket.id, status: ticket.status}));
   };
 
