@@ -26,7 +26,7 @@ function App() {
 
   return (
       <>
-      <ReactNotifications />
+        <ReactNotifications />
         <div className="App">
           <Button variant="contained" color="success" onClick={openCreateModal}>Create</Button>
           <Tickets />
