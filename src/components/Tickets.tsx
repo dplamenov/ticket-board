@@ -22,25 +22,25 @@ function Tickets() {
   return (
     <>
       <Box sx={{ display: 'flex' }}>
-        <List sx={style} component="nav">
+        <List sx={style}>
           <h2>Todo</h2>
           {(tickets[0] || []).map((ticket, key) => {
             return <TicketCard key={key} ticket={ticket} />
           })}
         </List>
-        <List sx={style} component="nav">
+        <List sx={style}>
           <h2>In progress</h2>
           {(tickets[1] || []).map((ticket, key) => {
             return <TicketCard key={key} ticket={ticket} />
           })}
         </List>
-        <List sx={style} component="nav">
+        <List sx={style}>
           <h2>In review</h2>
           {(tickets[2] || []).map((ticket, key) => {
             return <TicketCard key={key} ticket={ticket} />
           })}
         </List>
-        <List sx={style} component="nav">
+        <List sx={style}>
           <h2>Done</h2>
           {(tickets[3] || []).map((ticket, key) => {
             return <TicketCard key={key} ticket={ticket} />
