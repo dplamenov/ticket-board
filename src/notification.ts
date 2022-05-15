@@ -1,6 +1,6 @@
 import { NOTIFICATION_TYPE, Store } from 'react-notifications-component'
 
-const showNotifacion = (title: string, message: string, type: NOTIFICATION_TYPE | undefined) => {
+const showNotifacion = (title: string, message: string, type: NOTIFICATION_TYPE | undefined = 'info') => {
   Store.addNotification({
     title,
     message,
