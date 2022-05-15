@@ -47,7 +47,7 @@ function Tickets() {
           })}
         </List>
       </Box>
-      {tickets.length === 0 && <p>No tickets.</p>}
+      {Object.values(tickets).flat().length === 0 && <p>No tickets.</p>}
     </>
   )
 }
