@@ -4,6 +4,7 @@ import { SelectChangeEvent } from '@mui/material/Select';
 import { store, create } from '../store/tickets';
 import { Status } from '../interfaces';
 import modalStyles from '../styles/modalStyles';
+import showNotifacion from '../notification';
 
 function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
   const [label, setLabel] = useState('');
@@ -13,6 +14,7 @@ function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
 
   const handleCreate = () => {
     store.dispatch(create({ label, estimationValue, username: assignedUser, status }));
+    showNotifacion('Success', 'Successfully created', 'success');
     setLabel('');
     setEstimationValue('');
     setAssignedUser('');

@@ -5,7 +5,8 @@ import Tickets from './components/Tickets';
 import EditModal from './components/EditModal';
 import { store as editTicketStore, store } from './store/editTicketModal';
 import './App.css';
-
+import 'react-notifications-component/dist/theme.css';
+import { ReactNotifications } from 'react-notifications-component'
 
 function App() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
@@ -24,12 +25,15 @@ function App() {
   });
 
   return (
-    <div className="App">
-      <Button variant="contained" color="success" onClick={openCreateModal}>Create</Button>
-      <Tickets />
-      <CreateModal isOpen={isCreateModalOpen} close={closeCreateModal}/>
-      <EditModal isOpen={isEditModalOpen} close={closeEditModal}/>
-    </div>
+      <>
+      <ReactNotifications />
+        <div className="App">
+          <Button variant="contained" color="success" onClick={openCreateModal}>Create</Button>
+          <Tickets />
+          <CreateModal isOpen={isCreateModalOpen} close={closeCreateModal}/>
+          <EditModal isOpen={isEditModalOpen} close={closeEditModal}/>
+        </div>
+    </>
   );
 }
 
