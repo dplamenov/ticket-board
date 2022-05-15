@@ -13,6 +13,11 @@ function CreateModal({ isOpen, close }: { isOpen: boolean, close: () => void}) {
   const [status, setStatus] = useState(0);
 
   const handleCreate = () => {
+    if (label.length < 3 || estimationValue.length < 3 || assignedUser.length < 3) {
+      showNotifacion('Incorrect length', 'All lengths must be at least three symbols', 'warning');
+      return;
+    }
+
     store.dispatch(create({ label, estimationValue, username: assignedUser, status }));
     showNotifacion('Success', 'Successfully created', 'success');
     setLabel('');

@@ -5,6 +5,7 @@ import { store as ticketStore, editTicket } from '../store/tickets';
 import { store as editTicketStore, hide as storeHide} from '../store/editTicketModal';
 import { Status, Ticket } from '../interfaces';
 import modalStyles from '../styles/modalStyles';
+import showNotifacion from '../notification';
 
 function EditModal({ isOpen, close }: { isOpen: boolean, close: () => void }) {
   const [ticket, setTicket] = useState<Ticket>();
@@ -19,7 +20,13 @@ function EditModal({ isOpen, close }: { isOpen: boolean, close: () => void }) {
   }, []);
 
   const handleEdit = () => {
+    if ((ticket?.label as string).length < 3 || (ticket?.estimationValue as string).length < 3 || (ticket?.assignedUser.username as string).length < 3) {
+      showNotifacion('Incorrect length', 'All lengths must be at least three symbols', 'warning');
+      return;
+    }
+    
     ticketStore.dispatch(editTicket({ ticket, oldStatus }));
+    showNotifacion('Success', 'Successfully edited', 'success');
     editTicketStore.dispatch(storeHide());
   };
 
