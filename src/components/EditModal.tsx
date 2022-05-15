@@ -61,9 +61,9 @@ function EditModal({ isOpen, close }: { isOpen: boolean, close: () => void }) {
           sx={{ width: '100%' }}
           onChange={handleStatusChange}
         >
-          {Object.values(Status).filter((v) => !isNaN(Number(v))).map(e => {
-            return <MenuItem key={e} value={e}>{Status[+e]}</MenuItem>
-          })}
+          {Object.keys(Status).filter((v) => !isNaN(Number(v))).map(key => (
+            <MenuItem key={key} value={key}>{Status[+key]}</MenuItem>
+          ))}
         </Select>
       </FormControl>
       <Button variant="contained" color="success" sx={{ marginTop: '20px' }} onClick={handleEdit}>Edit</Button>
